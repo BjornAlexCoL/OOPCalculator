@@ -63,47 +63,36 @@ namespace OOPCalculator.Tests.Models
 
 
         }
-        [Fact]
-        public void AdditionArrayTest()
+        [Theory]
+        [InlineData(new double[] { 5.2, 9.8, 3, 4 }, 22)]
+        [InlineData(new double[] { 1.1, -3.3, 5, 7, 8.8 }, 18.6)]
+        [InlineData(new double[] { 0, 5.7, 8, 9, 10, 11, 12 }, 55.7)]
+        public void AdditionArrayTest(double[] array, double expected)
         {
             //Assign
-             Calc calculator = new Calc();
-            double[] termsOne = new double[] { 5.2, 9.8, 3, 4 };
-            double[] termsTwo = new double[] { 1.1, -3.3, 5, 7, 8.8 };
-            double[] termsThree = new double[] {0,5.7,8,9,10,11,12};
-            double expectedOne = 22;
-            double expectedTwo = 18.6;
-            double expectedThree = 55.7;
+            Calc calculator = new Calc();
 
             //Act
-            double sumOne = calculator.Addition(termsOne);
-            double sumTwo = calculator.Addition(termsTwo);
-            double sumThree = calculator.Addition(termsThree);
+            double sum = calculator.Addition(array);
             //Assert
-            Assert.Equal(expectedOne, sumOne,2);
-            Assert.Equal(expectedTwo, sumTwo,2);
-            Assert.Equal(expectedThree, sumThree,2);
+            Assert.Equal(expected, sum, 2);
         }
-        [Fact]
-        public void SubtractionArrayTest()
+
+        [Theory]
+        [InlineData(new double[] { 5.2, 9.8, 3, 4 },-11.6)]
+        [InlineData(new double[] { 1.1, -3.3, 5, 7, 8.8 },-16.4)]
+        [InlineData(new double[] { 0, 5.7, 8, 9, 10, 11, 12 }, -55.7)]
+        [InlineData(new double[] { -2.2, 5.5, -8.2, 61.1 }, -60.6)]
+        [InlineData(new double[] { -2.2 }, -2.2)]
+        public void SubtractionArrayTest(double[] array, double expected)
         {
             //Assign
-             Calc calculator = new Calc();
-            double[] termsOne = new double[] { 5.2, 9.8, 3, 4 };
-            double[] termsTwo = new double[] { 1.1, -3.3, 5, 7, 8.8 };
-            double[] termsThree = new double[] {0,5.7,8,9,10,11,12};
-            double expectedOne = -22;
-            double expectedTwo = -18.6;
-            double expectedThree = -55.7;
+            Calc calculator = new Calc();
 
             //Act
-            double diffOne = calculator.Subtraction(termsOne);
-            double diffTwo = calculator.Subtraction(termsTwo);
-            double diffThree = calculator.Subtraction(termsThree);
+            double diff = calculator.Subtraction(array);
             //Assert
-            Assert.Equal(expectedOne, diffOne,2);
-            Assert.Equal(expectedTwo, diffTwo,2);
-            Assert.Equal(expectedThree, diffThree,2);
+            Assert.Equal(expected, diff, 2);
         }
 
     }

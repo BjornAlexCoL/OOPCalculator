@@ -38,10 +38,10 @@ namespace OOPCalculator.Models
         }
         public double Subtraction(double[] numbers)
         {
-            double diff = 0;
-            foreach (double term in numbers)
+            double diff = (numbers.Length > 0) ? numbers[0] : 0;
+            for (int index = 1; index < numbers.Length; index++)
             {
-                diff -= term;
+                diff -=  numbers[index];
             }
             return diff;
         }
